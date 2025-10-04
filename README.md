@@ -3,193 +3,234 @@ invitación boda
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación de Boda - Abril & Pablo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Raleway', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación de Boda - Abril & Pablo</title>
+<style>
+  /* Estilos generales */
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #cce7ff, #1a3b6f);
+    overflow-x: hidden;
+    color: #fff;
+  }
 
-    header {
-      background: linear-gradient(rgba(10, 20, 40, 0.5), rgba(10, 20, 40, 0.5)), url('images/portada.jpg') no-repeat center/cover;
-      color: white;
-      padding: 100px 20px;
-    }
+  /* Sección de inicio (anillo animado) */
+  #inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle, rgba(0,0,0,0.1), transparent 70%);
+  }
 
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4em;
-      margin-bottom: 10px;
-    }
+  /* Partículas de luz */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    pointer-events: none;
+    animation: float 15s linear infinite;
+  }
 
-    header p {
-      font-size: 1.3em;
-    }
+  @keyframes float {
+    0% {transform: translateY(0px);}
+    100% {transform: translateY(-1000px);}
+  }
 
-    section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+  /* Anillo animado */
+  #anillo {
+    width: 120px;
+    height: 120px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    position: relative;
+    animation: girar 6s linear infinite;
+    cursor: pointer;
+    box-shadow: 0 0 15px #fff, 0 0 30px #aaddff;
+  }
 
-    h2 {
-      font-family: 'Playfair Display', serif;
-      color: #004080;
-      font-size: 2.2em;
-      margin-bottom: 15px;
-    }
+  @keyframes girar {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+  }
 
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
+  /* Secciones */
+  section {
+    padding: 60px 20px;
+    text-align: center;
+  }
 
-    .mapa iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 12px;
-    }
+  h1, h2, h3, p {
+    margin: 10px 0;
+  }
 
-    .momentos {
-      background-color: #e9f1f7;
-      border-top: 3px solid #b0c4de;
-    }
+  /* Fotos */
+  .fotos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
 
-    .momentos img {
-      width: 100%;
-      max-width: 300px;
-      margin: 10px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+  .fotos img {
+    width: 250px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  }
 
-    .botones {
-      margin-top: 30px;
-    }
+  /* Contador */
+  #contador {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
 
-    .boton {
-      display: inline-block;
-      background-color: #004080;
-      color: white;
-      padding: 12px 25px;
-      margin: 10px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
+  /* Botones WhatsApp */
+  .whatsapp-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
 
-    .boton:hover {
-      background-color: #1a75ff;
-    }
+  .whatsapp-buttons a {
+    display: inline-block;
+    background-color: #25D366;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 10px #25D366;
+    transition: transform 0.2s;
+  }
 
-    .comentarios {
-      background-color: #f0f4f9;
-      padding: 60px 20px;
-      border-top: 3px solid #b0c4de;
-    }
+  .whatsapp-buttons a:hover {
+    transform: scale(1.1);
+  }
 
-    .comentarios textarea {
-      width: 80%;
-      max-width: 600px;
-      height: 120px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 1em;
-      margin-bottom: 20px;
-      resize: none;
-    }
-
-    .comentarios .boton {
-      background-color: #004080;
-    }
-
-    footer {
-      background-color: #00264d;
-      color: white;
-      padding: 20px;
-      font-size: 0.9em;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.8em;
-      }
-      h2 {
-        font-size: 1.8em;
-      }
-    }
-  </style>
+  /* Animación apertura de invitación */
+  .visible { display: block; opacity: 1; transition: opacity 1s; }
+  .oculto { display: none; opacity: 0; }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Abril & Pablo</h1>
-    <p>“Lo que Dios unió, que no lo separe el hombre”</p>
-    <p><strong>Mateo 19:6</strong></p>
-  </header>
+<!-- Sección Inicio -->
+<section id="inicio">
+  <div id="anillo" title="Haz clic para abrir la invitación"></div>
+</section>
 
-  <section>
-    <h2>Nos complace invitarte a nuestra boda</h2>
-    <p>Con la bendición de Dios y de nuestros padres:</p>
-    <p><strong>Eva Aguilar Rendón</strong> y <strong>Pedro Pérez Hernández</strong><br>
-       <strong>Saray Hernández Santana</strong> y <strong>Pablo Tinoco Carranza †</strong></p>
+<!-- Sección Datos de los Novios y frase bíblica -->
+<section id="novios" class="oculto">
+  <h1>Abril Pérez Aguilar & Pablo Eliel Tinoco Hernández</h1>
+  <h3>Padres de la novia: Eva Aguilar Rendón & Pedro Pérez Hernández</h3>
+  <h3>Padres del novio: Saray Hernández Santana & Pablo Tinoco Carranza (finado)</h3>
+  <p style="font-style: italic; font-size: 1.2rem;">“Por tanto, lo que Dios ha unido, que no lo separe el hombre.” - Mateo 19:6</p>
+</section>
 
-    <p>Te esperamos el <strong>28 de diciembre de 2025</strong> para celebrar el inicio de nuestra historia juntos.</p>
-  </section>
+<!-- Sección Ceremonia y Recepción -->
+<section id="ceremonia" class="oculto">
+  <h2>Ceremonia Religiosa</h2>
+  <p>Iglesia Cristiana "Palabra de Vida" - 2:00 pm</p>
+  <h2>Recepción</h2>
+  <p>Jardín El Abuelo - 4:00 pm</p>
+  <iframe src="https://www.bing.com/maps/embed?h=400&w=600&cp=18.8825~-99.2035&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8" 
+    width="600" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</section>
 
-  <section class="mapa">
-    <h2>Ceremonia y Recepción</h2>
-    <p>Ambas se llevarán a cabo en el <strong>Jardín El Abuelo</strong> de Tlaquiltenango, Morelos.</p>
-    <p><strong>Ceremonia religiosa:</strong> 2:00 p.m.<br>
-       <strong>Recepción:</strong> 4:00 p.m.</p>
+<!-- Sección Fotos -->
+<section id="momentos" class="oculto">
+  <h2>Nuestros hermosos momentos</h2>
+  <p>“Tu amor es lo que he anhelado y el regalo que Dios me ha dado”</p>
+  <div class="fotos">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+  </div>
+</section>
 
-    <iframe src="https://www.bing.com/maps?&ty=18&q=Jard%C3%ADn%20El%20Abuelo%2C%20Tlaquiltenango%2C%20Morelos%2C%20M%C3%A9xico&ss=ypid.YN9001x10312454619790021630&mb=18.631809~-99.165076~18.622903~-99.151279" allowfullscreen loading="lazy"></iframe>
-  </section>
+<!-- Contador -->
+<section id="contador-section" class="oculto">
+  <h2>Faltan:</h2>
+  <div id="contador"></div>
+</section>
 
-  <section class="momentos">
-    <h2>Nuestros hermosos momentos</h2>
-    <p style="font-family:'Great Vibes', cursive; font-size:1.5em;">"Tu Amor es lo que he anhelado y el regalo que Dios me ha dado"</p>
-    <div>
-      <img src="images/momento1.jpg" alt="Momento 1">
-      <img src="images/momento2.jpg" alt="Momento 2">
-      <img src="images/momento3.jpg" alt="Momento 3">
-    </div>
-  </section>
+<!-- Sección Comentarios y WhatsApp -->
+<section id="contacto" class="oculto">
+  <h2>Deja tus buenos deseos</h2>
+  <textarea placeholder="Escribe tu mensaje..." rows="4" cols="50"></textarea>
+  <div class="whatsapp-buttons">
+    <a href="https://wa.me/527774914500" target="_blank">💬 Abril</a>
+    <a href="https://wa.me/527341123645" target="_blank">💬 Pablo</a>
+  </div>
+</section>
 
-  <section class="comentarios">
-    <h2>Comentarios para los novios</h2>
-    <p>Deja un mensaje especial para Abril y Pablo 💌</p>
-    <textarea placeholder="Escribe aquí tus buenos deseos..."></textarea>
-    <div class="botones">
-      <a href="https://wa.me/527774914500?text=¡Felicidades%20Abril%20y%20Pablo!%20Les%20deseamos%20todo%20lo%20mejor%20en%20esta%20nueva%20etapa." class="boton">Enviar a Abril 💙</a>
-      <a href="https://wa.me/527341123645?text=¡Felicidades%20Abril%20y%20Pablo!%20Les%20deseamos%20todo%20lo%20mejor%20en%20esta%20nueva%20etapa." class="boton">Enviar a Pablo 💙</a>
-    </div>
-  </section>
+<audio id="musica" loop>
+  <source src="EternamenteEnamorados.mp3" type="audio/mpeg">
+</audio>
 
-  <section>
-    <h2>Confirma tu asistencia</h2>
-    <p>Por favor confirma tu asistencia con los novios:</p>
-    <div class="botones">
-      <a href="https://wa.me/527774914500?text=Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Abril%20y%20Pablo" class="boton">WhatsApp Abril</a>
-      <a href="https://wa.me/527341123645?text=Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Abril%20y%20Pablo" class="boton">WhatsApp Pablo</a>
-    </div>
-  </section>
+<script>
+  // Generar partículas
+  for(let i=0;i<50;i++){
+    let p = document.createElement('div');
+    p.className = 'particle';
+    p.style.width = p.style.height = Math.random()*5+2+'px';
+    p.style.left = Math.random()*100+'%';
+    p.style.animationDuration = (10+Math.random()*10)+'s';
+    p.style.opacity = Math.random();
+    document.getElementById('inicio').appendChild(p);
+  }
 
-  <footer>
-    <p>Con amor, Abril & Pablo 💍</p>
-    <p>28 de diciembre de 2025 - Jardín El Abuelo, Tlaquiltenango</p>
-  </footer>
+  // Manejar animación y apertura
+  const anillo = document.getElementById('anillo');
+  const secciones = ['novios','ceremonia','momentos','contador-section','contacto'];
+  const musica = document.getElementById('musica');
 
+  function abrirInvitacion(){
+    anillo.style.display='none';
+    secciones.forEach(id => document.getElementById(id).classList.remove('oculto'));
+    secciones.forEach(id => document.getElementById(id).classList.add('visible'));
+    musica.play();
+  }
+
+  anillo.addEventListener('click', abrirInvitacion);
+
+  // Apertura automática tras 3 segundos
+  setTimeout(abrirInvitacion,3000);
+
+  // Contador
+  const contador = document.getElementById('contador');
+  const fechaBoda = new Date('December 28, 2025 14:00:00').getTime();
+
+  setInterval(()=>{
+    const ahora = new Date().getTime();
+    const distancia = fechaBoda - ahora;
+
+    const dias = Math.floor(distancia / (1000*60*60*24));
+    const horas = Math.floor((distancia % (1000*60*60*24))/(1000*60*60));
+    const minutos = Math.floor((distancia % (1000*60*60))/(1000*60));
+    const segundos = Math.floor((distancia % (1000*60))/1000);
+
+    contador.innerHTML = `${dias} días ${horas}h ${minutos}m ${segundos}s`;
+  },1000);
+</script>
 </body>
 </html>
-
+[eternamente.mp3](https://github.com/user-attachments/files/22691083/eternamente.mp3)
+![ring](https://github.com/user-attachments/assets/7c103387-8c68-4136-9c21-a0e4caffc557)
+![photo3](https://github.com/user-attachments/assets/88251ba4-836f-4baa-a527-d6b2ab1a15be)
+![photo2](https://github.com/user-attachments/assets/64c146ea-b776-4c00-8130-4f5e320b8d77)
+![photo1](https://github.com/user-attachments/assets/3671fd6d-f951-4734-ad51-15e82d51f879)
+![momento3](https://github.com/user-attachments/assets/a4dfc32d-9538-4f2c-91f8-9e1d470605f1)
+![momento2](https://github.com/user-attachments/assets/6d8f9a67-c9d5-4f08-a8d9-af78138561e5)
+![momento1](https://github.com/user-attachments/assets/1d58b583-8979-47f0-b564-efbaad2c8aa1)
+<img width="1200" height="1200" alt="flower3" src="https://github.com/user-attachments/assets/e2134c80-3b0a-4637-9baa-6ef7b5ff6705" />
+![flower2](https://github.com/user-attachments/assets/61dcbe7c-327c-405d-ab45-44f10d02cf5b)
+![flower1](https://github.com/user-attachments/assets/68fa3f5f-9196-4b37-b919-19d9b9bf2ec3)
+ 
